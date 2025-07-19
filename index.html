@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youth Genfil - Komunitas Percaya, Hidup Penuh Tujuan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-video {
+            position: relative;
+            height: 80vh;
+            overflow: hidden;
+        }
+        
+        .hero-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hero-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .nav-scroll {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        
+        .event-card:hover {
+            transform: scale(1.02);
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: #FFF;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        
+        .testimonial-slider {
+            scroll-snap-type: x mandatory;
+        }
+        
+        .testimonial-slide {
+            scroll-snap-align: start;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/6288269826450" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Navigation -->
+    <header class="fixed w-full z-50">
+        <nav id="navbar" class="py-4 px-6 transition-all duration-300">
+            <div class="container mx-auto flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="#home" class="block"> <img src="images/logoYouth.png" alt="Youth Genfil Logo" class="h-12">
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-white md:text-gray-800 font-medium hover:text-purple-500 transition">Beranda</a>
+                    <a href="#about" class="text-white md:text-gray-800 font-medium hover:text-purple-500 transition">Tentang Kami</a>
+                    <a href="#schedule" class="text-white md:text-gray-800 font-medium hover:text-purple-500 transition">Jadwal Ibadah</a>
+                    <a href="#events" class="text-white md:text-gray-800 font-medium hover:text-purple-500 transition">Acara</a>
+                    <a href="#media" class="text-white md:text-gray-800 font-medium hover:text-purple-500 transition">Media</a>
+                    <a href="#contact" class="text-white md:text-gray-800 font-medium hover:text-purple-500 transition">Hubungi Kami</a>
+                    <a href="#gabung-sekarang" class="primary-bg hover:bg-purple-800 text-gray-800 px-6 py-2 rounded-full font-medium transition">Gabung Sekarang</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white md:text-gray-800 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden bg-white py-4 px-6 rounded-lg shadow-lg mt-2">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="text-gray-800 font-medium hover:text-yellow-500 transition">Beranda</a>
+                    <a href="#about" class="text-gray-800 font-medium hover:text-yellow-500 transition">Tentang Kami</a>
+                    <a href="#schedule" class="text-gray-800 font-medium hover:text-yellow-500 transition">Jadwal Ibadah</a>
+                    <a href="#ministries" class="text-gray-800 font-medium hover:text-yellow-500 transition">Pelayanan</a>
+                    <a href="#events" class="text-gray-800 font-medium hover:text-yellow-500 transition">Acara</a>
+                    <a href="#media" class="text-gray-800 font-medium hover:text-yellow-500 transition">Media</a>
+                    <a href="#contact" class="text-gray-800 font-medium hover:text-yellow-500 transition">Hubungi Kami</a>
+                    <a href="#gabung-sekarang" class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-full font-medium text-center transition">Gabung Sekarang</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-[80vh] bg-cover bg-center" style="background-image: url('images/IMG_3975.jpg')">
+        <div class="absolute inset-0 bg-gradient-to-t from-purple-950 to-red-800 opacity-70 flex flex-col justify-center items-center text-center text-white px-6">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Youth Genfil</h1>
+            <h2 class="text-2xl md:text-3xl font-semibold mb-6"></h2>
+            <p class="text-lg md:text-xl max-w-2xl mb-8">Persekutuan anak muda GPIN Filadelfia Bandar Lampung, bertumbuh dalam Kristus, menjangkau sesama dengan Injil.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#schedule" class="bg-purple-700 hover:bg-purple-800 text-white px-8 py-3 rounded-full font-medium transition">Lihat Jadwal Ibadah</a>
+                <a href="#about" class="bg-transparent hover:bg-white hover:bg-opacity-20 border-2 border-white text-white px-8 py-3 rounded-full font-medium transition">Kenali Lebih Jauh</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-12">Sekilas Youth Genfil</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="feature-card bg-gray-50 p-8 rounded-xl shadow-md text-center hover:shadow-lg">
+                <div class="text-purple-700 text-4xl mb-4"> <i class="fas fa-cross"></i> </div>
+                <h3 class="text-xl font-bold mb-3">Ibadah Persekutuan</h3>
+                <p class="text-gray-700">
+                    Rasakan hadirat Tuhan dalam ibadah yang penuh semangat, firman yang menguatkan, dan penyembahan yang mempersatukan hati pemuda-pemudi
+                </p>
+            </div>
+            
+            <div class="feature-card bg-gray-50 p-8 rounded-xl shadow-md text-center hover:shadow-lg">
+                <div class="text-purple-700 text-4xl mb-4">
+                    <i class="fas fa-handshake"></i> </div>
+                <h3 class="text-xl font-bold mb-3">Keluarga Dalam Kristus</h3>
+                <p class="text-gray-700">
+                    Bangun ikatan persaudaraan yang erat, berbagi cerita, dan saling menopang dalam setiap langkah perjalanan iman
+                </p>
+            </div>
+            
+            <div class="feature-card bg-gray-50 p-8 rounded-xl shadow-md text-center hover:shadow-lg">
+                <div class="text-purple-700 text-4xl mb-4">
+                    <i class="fas fa-church"></i> </div>
+                <h3 class="text-xl font-bold mb-3">Melayani Dengan Hati</h3>
+                <p class="text-gray-700">
+                    Wadah untuk menemukan dan mengembangkan karunia rohani Anda, serta berkontribusi aktif dalam pelayanan di gereja GPIN Filadelfia
+                </p>
+            </div>
+            
+            <div class="feature-card bg-gray-50 p-8 rounded-xl shadow-md text-center hover:shadow-lg">
+                <div class="text-purple-700 text-4xl mb-4">
+                    <i class="fas fa-lightbulb"></i> </div>
+                <h3 class="text-xl font-bold mb-3">Membawa Terang</h3>
+                <p class="text-gray-700">
+                    Menjadi agen perubahan yang membawa nilai-nilai Kerajaan Allah dan dampak positif ke tengah lingkungan dan generasi
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Video/Testimonial Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <div class="relative pb-[56.25%] rounded-xl overflow-hidden shadow-lg">
+                        <iframe class="absolute top-0 left-0 w-full h-full" 
+                                src="https://www.youtube.com/embed/uyj-br7jvVc?si=eznyRv8SeIzq-buZ" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl font-bold mb-6">Aktivitas Seru Kami di Youth Genfil!</h2>
+                    <div class="bg-white p-6 rounded-xl shadow-md mb-6">
+                        <p class="text-gray-600 italic mb-4">Di Youth Genfil GPIN Filadelfia Bandar Lampung, kami bukan hanya bertumbuh dalam Kristus melalui ibadah, namun juga membangun komunitas erat penuh tawa dan persahabatan sejati lewat kegiatan dan aktivitas seru lainnya</p>
+                        <div class="flex items-center">
+                            <img src="images/Berkat.JPG" alt="Testimoni" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <h4 class="font-bold">Berkat Fa'atulo Halawa</h4>
+                                <p class="text-gray-500 text-sm">Ketua Pemuda Youth Genfil</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="inline-block bg-purple-700 hover:bg-purple-800 text-white px-6 py-3 rounded-full font-medium transition">Lihat Lebih Banyak Aktivitas</a>
+                </div>
+            </div>
+        </section>
+
+    <!-- Events Section -->
+    <section id="events" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col sm:flex-row justify-between items-center mb-12 text-center sm:text-left">
+                <h2 class="text-3xl font-bold mb-4 sm:mb-0">Acara Mendatang Youth Genfil</h2>
+                <a href="#" class="text-purple-700 hover:text-purple-800 font-medium">Lihat Semua Acara →</a>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="event-card bg-white rounded-xl overflow-hidden shadow-md border border-gray-100 transition flex flex-col w-full max-w-sm mx-auto lg:mx-0">
+                    <img src="images/Glamping.JPEG" alt="Ibadah Glamping Youth Genfil" class="w-full h-48 object-cover">
+                    <div class="p-5 flex flex-col flex-grow">
+                        <div class="flex items-center text-sm text-gray-500 mb-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>6 Juni 2025 • Malam Hari</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Ibadah Glamping: Dekat Tuhan, Dekat Alam!</h3>
+                        <p class="text-gray-600 mb-4 flex-grow">
+                            Rasakan pengalaman ibadah yang berbeda dan menyegarkan di alam terbuka. Persekutuan akrab, firman yang memberkati, dan suasana glamping yang tak terlupakan bersama pemuda-pemudi Youth Genfil. Jangan sampai ketinggalan!
+                        </p>
+                        <a href="#" class="inline-flex items-center justify-center bg-purple-700 hover:bg-purple-800 text-white py-2 rounded-full text-sm font-medium transition mt-auto px-3">
+                            Daftar & Info Detail
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="event-card bg-white rounded-xl overflow-hidden shadow-md border border-gray-100 transition flex flex-col w-full max-w-sm mx-auto lg:mx-0">
+                    <img src="images/images3.JPG" alt="Permainan Tenis Meja" class="w-full h-48 object-cover">
+                    <div class="p-5 flex flex-col flex-grow">
+                        <div class="flex items-center text-sm text-gray-500 mb-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>Setiap Jumat Malam (Setelah Ibadah)</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Serunya Ngumpul: Turnamen Tenis Meja di BW!</h3>
+                        <p class="text-gray-600 mb-4 flex-grow">
+                            Asah skill dan jalin keakraban! Nikmati pertandingan tenis meja yang seru dan persahabatan yang solid. Datang dan buktikan siapa raja/ratu pingpong Youth Genfil. Siapkan raketmu!
+                        </p>
+                        <a href="#" class="inline-flex items-center justify-center bg-purple-700 hover:bg-purple-800 text-white py-2 rounded-full text-sm font-medium transition mt-auto px-3">
+                            Gabung Keseruannya
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="event-card bg-white rounded-xl overflow-hidden shadow-md border border-gray-100 transition flex flex-col w-full max-w-sm mx-auto lg:mx-0">
+                    <img src="images/Ibadah.JPEG" alt="Penjangkauan Jiwa" class="w-full h-48 object-cover">
+                    <div class="p-5 flex flex-col flex-grow">
+                        <div class="flex items-center text-sm text-gray-500 mb-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>Berkelanjutan • Dapatkan Reward!</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Ayo 'Narik Jiwa': Bawa Teman, Raih Berkat!</h3>
+                        <p class="text-gray-600 mb-4 flex-grow">
+                            Panggilan untuk menjangkau! Ajak teman, pacar, atau kerabat dekatmu untuk mengenal Kristus di Youth Genfil. Setiap jiwa yang Anda bawa, akan ada berkat dan reward spesial menanti Anda!
+                        </p>
+                        <a href="#" class="inline-flex items-center justify-center bg-purple-700 hover:bg-purple-800 text-white py-2 rounded-full text-sm font-medium transition mt-auto px-3">
+                            Ikut Misi Ini
+                        </a>
+                    </div>
+                </div>
+    
+                <div class="lg:col-span-full flex justify-center flex-wrap gap-8 mt-8">
+                    <div class="event-card bg-white rounded-xl overflow-hidden shadow-md border border-gray-100 transition flex flex-col w-full max-w-sm mx-auto lg:mx-0">
+                        <img src="images/Konten1.png" alt="Pembuatan Konten" class="w-full h-48 object-cover">
+                        <div class="p-5 flex flex-col flex-grow">
+                            <div class="flex items-center text-sm text-gray-500 mb-2">
+                                <i class="far fa-calendar-alt mr-2"></i>
+                                <span>Setiap Selesai Ibadah</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Yuk Ngonten Bareng: Ekspresikan Imanmu!</h3>
+                            <p class="text-gray-600 mb-4 flex-grow">
+                                Punya ide konten rohani yang keren? Gabung tim kreatif kami! Setiap selesai ibadah, kita buat 3 konten menarik dengan orang berbeda. Ajak temanmu, ekspresikan iman, dan berdampak digital!
+                            </p>
+                            <a href="#" class="inline-flex items-center justify-center bg-purple-700 hover:bg-purple-800 text-white py-2 rounded-full text-sm font-medium transition mt-auto px-3">
+                                Gabung Tim Konten
+                            </a>
+                        </div>
+                    </div>
+    
+                    <div class="event-card bg-white rounded-xl overflow-hidden shadow-md border border-gray-100 transition flex flex-col w-full max-w-sm mx-auto lg:mx-0">
+                        <img src="images/Kunjungan.jpg" alt="Kunjungan Kasih" class="w-full h-48 object-cover">
+                        <div class="p-5 flex flex-col flex-grow">
+                            <div class="flex items-center text-sm text-gray-500 mb-2">
+                                <i class="far fa-calendar-alt mr-2"></i>
+                                <span>Tiap Akhir Bulan</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Kunjungan Kasih: Youth Genfil Peduli!</h3>
+                            <p class="text-gray-600 mb-4 flex-grow">
+                                Kami merindukan setiap pemuda untuk bertumbuh bersama. Setiap akhir bulan, tim kami akan mengunjungi dan menjalin silaturahmi dengan pemuda yang belum aktif. Mari kita saling menguatkan dalam Kristus.
+                            </p>
+                            <a href="#" class="inline-flex items-center justify-center bg-purple-700 hover:bg-purple-800 text-white py-2 rounded-full text-sm font-medium transition mt-auto px-3">
+                                Dukung Pelayanan Ini
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Tentang Youth Genfil GPIN Filadelfia</h2>
+                <p class="text-gray-700 max-w-3xl mx-auto text-lg leading-relaxed">
+                    Youth Genfil adalah persekutuan anak muda Gereja GPIN Filadelfia Bandar Lampung. Kami hadir sebagai wadah bagi generasi muda untuk bertumbuh dalam iman yang teguh berlandaskan Alkitab, menemukan tujuan hidup dalam Kristus, dan bersama-sama menjadi terang di tengah kota.
+                </p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-12 mb-16 items-start"> 
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-bold mb-4">Visi Kami</h3>
+                    <p class="text-gray-700 mb-6 leading-relaxed">
+                        "Menjadi komunitas pemuda-pemudi yang mengasihi Tuhan dengan segenap hati dan jiwa, hidup seturut kebenaran Firman-Nya, serta menjadi duta Kristus yang berdampak transformatif bagi keluarga, gereja, dan bangsa, sesuai visi Gereja GPIN Filadelfia yang mandiri, fundamental, dan berlandaskan Alkitab."
+                    </p>
+                    
+                    <h3 class="text-2xl font-bold mb-4">Misi Kami</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-purple-700 mt-1 mr-3"></i>
+                            <span><strong>Membentuk Iman yang Kuat:</strong> Membangun hubungan pribadi yang intim dengan Tuhan melalui pengajaran firman yang fundamental dan relevan.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-purple-700 mt-1 mr-3"></i>
+                            <span><strong>Membangun Komunitas Sejati:</strong> Menciptakan suasana kekeluargaan yang hangat, saling mendukung, dan memotivasi dalam setiap aspek kehidupan.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-purple-700 mt-1 mr-3"></i>
+                            <span><strong>Melengkapi untuk Pelayanan:</strong> Mengidentifikasi dan mengembangkan talenta serta karunia rohani pemuda untuk aktif berkontribusi dalam pelayanan di gereja dan masyarakat.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-purple-700 mt-1 mr-3"></i>
+                            <span><strong>Menjangkau Generasi:</strong> Menjadi jembatan kasih Kristus bagi sesama pemuda yang belum mengenal Tuhan, serta menyebarkan nilai-nilai Kerajaan Allah.</span>
+                        </li>
+                    </ul>
+                </div>
+               
+                <div class="lg:w-1/2">
+                    <img src="images/Team.jpg" alt="About Youth Genfil" class="w-full h-auto rounded-xl shadow-lg">
+                </div>
+            </div>
+            
+            <!-- Core Values -->
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold mb-8">4 Tiang Rohani GPIN</h3> 
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center"> 
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-md transform hover:scale-105 transition-transform duration-300 w-full max-w-xs">
+                        <div class="text-purple-700 text-4xl mb-4">
+                            <i class="fas fa-cross"></i> </div>
+                        <h4 class="text-xl font-bold mb-2">Iman</h4>
+                        <p class="text-gray-700">Berakar pada keyakinan teguh kepada Kristus, sumber pengharapan dan keselamatan.</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-md transform hover:scale-105 transition-transform duration-300 w-full max-w-xs">
+                        <div class="text-purple-700 text-4xl mb-4">
+                            <i class="fas fa-dove"></i> </div>
+                        <h4 class="text-xl font-bold mb-2">Kesucian</h4>
+                        <p class="text-gray-700">Hidup dalam kemurnian hati dan pikiran, mencerminkan karakter Tuhan dalam setiap tindakan.</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-md transform hover:scale-105 transition-transform duration-300 w-full max-w-xs">
+                        <div class="text-purple-700 text-4xl mb-4">
+                            <i class="fas fa-people-group"></i> </div>
+                        <h4 class="text-xl font-bold mb-2">Persekutuan</h4>
+                        <p class="text-gray-700">Menjalin hubungan yang erat antar sesama, saling mendukung dan bertumbuh bersama dalam kasih Kristus.</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-md transform hover:scale-105 transition-transform duration-300 w-full max-w-xs">
+                        <div class="text-purple-700 text-4xl mb-4">
+                            <i class="fas fa-hand-holding-dollar"></i> </div>
+                        <h4 class="text-xl font-bold mb-2">Pengorbanan</h4>
+                        <p class="text-gray-700">Memberikan diri sepenuhnya dalam pelayanan, waktu, tenaga, dan harta untuk kemuliaan nama Tuhan.</p>
+                    </div>
+                </div>
+            </div>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Jadwal Ibadah & Persekutuan</h2>
+                <p class="text-gray-700 max-w-3xl mx-auto text-lg">
+                    Mari bergabung dalam setiap pertemuan kami untuk bertumbuh bersama dalam iman, penyembahan, dan persahabatan yang erat. Ada banyak cara untuk terhubung dengan keluarga besar GPIN Filadelfia!
+                </p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-bold mb-6 text-center">Agenda Mingguan Kami</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start p-4 bg-white rounded-lg shadow-sm">
+                                <div class="text-purple-700 text-xl mr-4 mt-1">
+                                    <i class="fas fa-church"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Ibadah Umum Minggu</h4>
+                                    <p class="text-gray-700 text-sm">Minggu, 09.00 - 12.00 WIB</p>
+                                    <p class="text-gray-700 text-sm">Aula Polresta Bandar Lampung</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start p-4 bg-white rounded-lg shadow-sm">
+                                <div class="text-purple-700 text-xl mr-4 mt-1">
+                                    <i class="fas fa-users"></i> </div>
+                                <div>
+                                    <h4 class="font-bold">Ibadah Youth Genfil</h4>
+                                    <p class="text-gray-700 text-sm">Jumat, 18.30 - 21.00 WIB</p>
+                                    <p class="text-gray-700 text-sm">Pastori BW</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start p-4 bg-white rounded-lg shadow-sm">
+                                <div class="text-purple-700 text-xl mr-4 mt-1">
+                                    <i class="fas fa-comments"></i> </div>
+                                <div>
+                                    <h4 class="font-bold">Komunitas Sel (Komsel)</h4>
+                                    <p class="text-gray-700 text-sm">Rabu, 19.00 - 21.00 WIB</p>
+                                    <p class="text-gray-700 text-sm">Rumah Jemaat (Lokasi menyesuaikan)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start p-4 bg-white rounded-lg shadow-sm">
+                                <div class="text-purple-700 text-xl mr-4 mt-1">
+                                    <i class="fas fa-hands-praying"></i> </div>
+                                <div>
+                                    <h4 class="font-bold">Persekutuan Doa</h4>
+                                    <p class="text-gray-700 text-sm">Sabtu, 18.00 - 19.30 WIB</p>
+                                    <p class="text-gray-700 text-sm">Pastori BW</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 text-center">
+                            <p class="text-gray-700 mb-2">Dapatkan inspirasi rohani dan update Youth Genfil! Kunjungi YouTube kami!</p>
+                            <a href="https://www.youtube.com/@YouthGenfil" target="_blank" class="inline-block bg-purple-700 hover:bg-purple-800 text-white px-6 py-2 rounded-full text-sm font-medium transition">
+                                <i class="fab fa-youtube mr-2"></i> Kunjungi YouTube
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-md h-full">
+                        <h3 class="text-xl font-bold mb-6 text-center">Temukan Kami di Bandar Lampung</h3>
+                        
+                        <div class="mb-4">
+                            <p class="text-gray-700 mb-2">
+                                <i class="fas fa-map-marker-alt text-purple-700 mr-2"></i> 
+                                Jl. M. Yunus Ujung, Gg. Duku, Way Kandis, Tanjung Senang 
+                            </p>
+                            </div>
+                        
+                        <div class="relative pb-[56.25%] rounded-xl overflow-hidden shadow-lg">
+                            <iframe class="absolute top-0 left-0 w-full h-full" 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.417851383811!2d105.276478949619!3d-5.353027947726244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e40c4db0fe8633f%3A0xc42d96bfab5f1aca!2sGg.%20Duku%2C%20Fajar%20Baru%2C%20Kec.%20Jati%20Agung%2C%20Kabupaten%20Lampung%20Selatan%2C%20Lampung!5e0!3m2!1sid!2sid!4v1752840823271!5m2!1sid!2sid" 
+                                    frameborder="0" 
+                                    style="border:0;" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <h4 class="font-bold mb-3">Fasilitas Gereja:</h4>
+                            <ul class="grid grid-cols-2 gap-3 text-sm text-gray-700">
+                                <li class="flex items-center"><i class="fas fa-check text-purple-700 mr-2"></i> Ruang Ibadah Utama </li>
+                                <li class="flex items-center"><i class="fas fa-check text-purple-700 mr-2"></i> Area Parkir Luas</li>
+                                <li class="flex items-center"><i class="fas fa-check text-purple-700 mr-2"></i> Ruang Anak & Kelas Sekolah Minggu</li>
+                                <li class="flex items-center"><i class="fas fa-check text-purple-700 mr-2"></i> Akses Wi-Fi (Opsional)</li>
+                                <li class="flex items-center"><i class="fas fa-check text-purple-700 mr-2"></i> Area Keamanan & CCTV</li>
+                                <li class="flex items-center"><i class="fas fa-check text-purple-700 mr-2"></i> Toilet</li>
+                                </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ministries Section -->
+    <section id="leadership" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Tim Pengurus Youth Genfil</h2>
+                <p class="text-gray-700 max-w-3xl mx-auto text-lg">
+                    Di balik setiap kegiatan dan pertumbuhan Youth Genfil, ada tim pengurus yang berdedikasi melayani dengan sepenuh hati. Kenali mereka lebih dekat!
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
+                    <img src="images/Berkat.JPG" alt="Berkat - Ketua Youth Genfil" class="w-full h-48 object-cover object-top">
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold mb-1">Berkat</h3>
+                        <p class="text-purple-700 font-semibold mb-3">Ketua Youth Genfil</p>
+                        <p class="text-gray-600 text-sm mb-4">Bertanggung jawab memimpin dan mengarahkan kegiatan pemuda</p>
+                        <a href="https://www.instagram.com/erka08_berkat" target="_blank" class="inline-block bg-purple-700 hover:bg-purple-800 text-white p-3 rounded-full transition">
+                            <i class="fab fa-instagram text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
+                    <img src="images/Semi.JPG" alt="Semi - Sekretaris Youth Genfil" class="w-full h-48 object-cover object-top">
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold mb-1">Semi</h3>
+                        <p class="text-purple-700 font-semibold mb-3">Sekretaris</p>
+                        <p class="text-gray-600 text-sm mb-4">Pengelola administrasi yang rapi, memastikan setiap agenda berjalan lancar dan terorganisir.</p>
+                        <a href="https://www.instagram.com/godlifesamuel" target="_blank" class="inline-block bg-purple-700 hover:bg-purple-800 text-white p-3 rounded-full transition">
+                            <i class="fab fa-instagram text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
+                    <img src="images/Laura.jpg" alt="Laura - Bendahara Youth Genfil" class="w-full h-48 object-cover object-top">
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold mb-1">Laura</h3>
+                        <p class="text-purple-700 font-semibold mb-3">Bendahara</p>
+                        <p class="text-gray-600 text-sm mb-4">Bertanggung jawab atas keuangan kas pemuda Youth Genfil.</p>
+                        <a href="https://www.instagram.com/lauraagloria" target="_blank" class="inline-block bg-purple-700 hover:bg-purple-800 text-white p-3 rounded-full transition">
+                            <i class="fab fa-instagram text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+    
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
+                    <img src="images/Adit.JPG" alt="Adit - Koordinator Kerohanian" class="w-full h-48 object-cover object-top">
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold mb-1">Adit</h3>
+                        <p class="text-purple-700 font-semibold mb-3">Koordinator Kerohanian</p>
+                        <p class="text-gray-600 text-sm mb-4">Menyiapkan dan memimpin kegiatan yang berkaitan dengan iman dan kerohanian</p>
+                        <a href="https://www.instagram.com/gabrieladetya" target="_blank" class="inline-block bg-purple-700 hover:bg-purple-800 text-white p-3 rounded-full transition">
+                            <i class="fab fa-instagram text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+        
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
+                    <img src="images/Aldin.JPG" alt="Aldin - Anggota Kerohanian" class="w-full h-48 object-cover object-top">
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold mb-1">Aldin</h3>
+                        <p class="text-purple-700 font-semibold mb-3">Anggota Kerohanian</p>
+                        <p class="text-gray-600 text-sm mb-4">Membantu koordinator kerohanian dalam setiap acara rohani</p>
+                        <a href="https://www.instagram.com/aldin_hndr" target="_blank" class="inline-block bg-purple-700 hover:bg-purple-800 text-white p-3 rounded-full transition">
+                            <i class="fab fa-instagram text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+        
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
+                    <img src="images/Kevin.JPG" alt="Kevin - Koordinator Humas" class="w-full h-48 object-cover object-top">
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold mb-1">Kevin</h3>
+                        <p class="text-purple-700 font-semibold mb-3">Koordinator Humas</p>
+                        <p class="text-gray-600 text-sm mb-4">Bertugas menjalin hubungan baik dan menyebarkan informasi tentang kegiatan pemuda</p>
+                        <a href="https://www.instagram.com/kevanugrah/" target="_blank" class="inline-block bg-purple-700 hover:bg-purple-800 text-white p-3 rounded-full transition">
+                            <i class="fab fa-instagram text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+    
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition lg:col-start-2">
+                    <img src="images/Joy.JPG" alt="Joy - Anggota Humas" class="w-full h-48 object-cover object-top">
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold mb-1">Joy</h3>
+                        <p class="text-purple-700 font-semibold mb-3">Anggota Humas</p>
+                        <p class="text-gray-600 text-sm mb-4">Membantu koordinator humas dalam mengenalkan Youth Genfil ke luar</p>
+                        <a href="https://www.instagram.com/mardecell/" target="_blank" class="inline-block bg-purple-700 hover:bg-purple-800 text-white p-3 rounded-full transition">
+                            <i class="fab fa-instagram text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media Section -->
+    <section id="media" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Media Kami</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Temukan koleksi video dan audio inspiratif dari Youth Genfil GPIN Filadelfia. 
+                    Dengarkan pujian, saksikan penampilan khusus, dan dapatkan inspirasi rohani di sini</p>
+            </div>
+            <div class="mb-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <!-- Video 2 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md">
+                        <div class="relative pb-[56.25%]">
+                            <iframe class="absolute top-0 left-0 w-full h-full" <iframe width="560" height="315" src="https://www.youtube.com/embed/DbDVzNj6dgk?si=3_jeUwjP9W8MKd45" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold mb-1">Dari Utara ke Selatan Medley: Kaulah Kuatku (Akustik) 2023</h4>
+                            <p class="text-gray-600 text-sm">Sebuah persembahan medley akustik yang menginspirasi dari Youth GPIN Filadelfia Lampung</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 3 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md">
+                        <div class="relative pb-[56.25%]">
+                            <iframe class="absolute top-0 left-0 w-full h-full" <iframe width="560" height="315" src="https://www.youtube.com/embed/ZiR8NumMpu8?si=9NctkB5aSOhIwOqZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold mb-1">Lebih Dari Pemenang (Cover Cajon) 2022</h4>
+                            <p class="text-gray-600 text-sm">Nikmati aransemen segar lagu 'Lebih Dari Pemenang' dengan sentuhan cajon yang energik, dipersembahkan oleh Youth GPIN Filadelfia</p>
+                        </div>
+                    </div>
+                
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md">
+                        <div class="relative pb-[56.25%]">
+                            <iframe class="absolute top-0 left-0 w-full h-full" 
+                                src="https://www.youtube.com/embed/naGNRSPwc6Q?si=WuMGSpt9dbu-echx" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold mb-1">Vocal Group Sidi: Ku Bersyukur Yesus 2021</h4>
+                            <p class="text-gray-600 text-sm">Persembahan lagu peneguhan sidi yang penuh makna dan sukacita dari Vocal Group GPIN Filadelfia.</p>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="text-center mt-8">
+                    <a href="https://youtube.com/@youthgenfil?si=lnFfyiteWt3DCetq" target="_blank" rel="noopener noreferrer" 
+                       class="inline-block bg-purple-500 hover:bg-purple-600 text-white px-6 py-2 rounded-full font-medium transition">
+                        <i class="fab fa-youtube mr-2"></i> Kunjungi Channel YouTube Kami
+                    </a>
+                </div>
+             </div>
+            <div>
+                <h3 class="text-2xl font-bold mb-6 text-center">Galeri Foto</h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              
+                    <img src="images/images.JPG" alt="Gallery" class="w-full h-40 object-cover rounded-lg hover:opacity-90 transition cursor-pointer">
+                    <img src="images/images.jpeg" alt="Gallery" class="w-full h-40 object-cover rounded-lg hover:opacity-90 transition cursor-pointer">
+                    <img src="images/images1.jpeg" alt="Gallery" class="w-full h-40 object-cover rounded-lg hover:opacity-90 transition cursor-pointer">
+                    <img src="images/images2.JPG" alt="Gallery" class="w-full h-40 object-cover rounded-lg hover:opacity-90 transition cursor-pointer">
+                    <img src="images/images3.JPG" alt="Gallery" class="w-full h-40 object-cover rounded-lg hover:opacity-90 transition cursor-pointer">
+                    <img src="images/images4.JPG" alt="Gallery" class="w-full h-40 object-cover rounded-lg hover:opacity-90 transition cursor-pointer">
+                    <img src="images/images5.JPG" alt="Gallery" class="w-full h-40 object-cover rounded-lg hover:opacity-90 transition cursor-pointer">
+                    <img src="images/images6.jpeg" alt="Gallery" class="w-full h-40 object-cover rounded-lg hover:opacity-90 transition cursor-pointer">
+                </div> 
+                <div class="text-center mt-8">
+                    <a href="https://www.instagram.com/youthgenfil/" target="_blank" rel="noopener noreferrer" 
+                    class="inline-block bg-purple-500 hover:bg-purple-600 text-white px-6 py-2 rounded-full font-medium transition">
+                        <i class="fab fa-instagram mr-2"></i> Lihat Lebih Banyak di Instagram
+                    </a>
+                </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Hubungi Kami</h2>
+                <p class="text-gray-700 max-w-3xl mx-auto text-lg">Kami senang mendengar dari Anda! Silakan hubungi kami melalui form berikut atau informasi kontak yang tersedia.</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <h3 class="text-2xl font-bold mb-6">Kirim Pesan</h3>
+                        
+                        <form>
+                            <div class="mb-4">
+                                <label for="name" class="block text-gray-700 font-medium mb-2">Nama Lengkap</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-700">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-700">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="phone" class="block text-gray-700 font-medium mb-2">Nomor Telepon</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-700">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="subject" class="block text-gray-700 font-medium mb-2">Subjek</label>
+                                <select id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-700">
+                                    <option value="">Pilih subjek</option>
+                                    <option value="info">Informasi Umum</option>
+                                    <option value="prayer">Permohonan Doa</option>
+                                    <option value="ministry">Pelayanan</option>
+                                    <option value="event">Acara</option>
+                                    <option value="other">Lainnya</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="message" class="block text-gray-700 font-medium mb-2">Pesan</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-700"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-purple-700 hover:bg-purple-800 text-white py-3 rounded-full font-medium transition">Kirim Pesan</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-white p-8 rounded-xl shadow-md h-full">
+                        <h3 class="text-2xl font-bold mb-6">Informasi Kontak</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="text-purple-700 text-xl mr-4 mt-1">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Alamat</h4>
+                                    <p class="text-gray-700">Jl. M. Yunus Ujung, Gg. Duku, Way Kandis, Tanjung Senang</p>
+                                    <p class="text-gray-700">Bandar Lampung</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="text-purple-700 text-xl mr-4 mt-1">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Telepon</h4>
+                                    <p class="text-gray-700">0812-3456-7890 (WhatsApp)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="text-purple-700 text-xl mr-4 mt-1">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Email</h4>
+                                    <p class="text-gray-700">youthgenfilbdl@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="text-purple-700 text-xl mr-4 mt-1">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Jam Ibadah</h4>
+                                    <p class="text-gray-700">Senin-Jumat: 18:30 - 21:00 WIB</p>
+                                    <p class="text-gray-700">Sabtu: 19:00 - 21:00 WIB</p>
+                                    <p class="text-gray-700">Minggu: 09.00 - 12.00 WIB</p>
+                                </div>
+                            </div>
+                            
+                            <div class="pt-4">
+                                <h4 class="font-bold mb-4">Media Sosial</h4>
+                                <div class="flex space-x-4">
+                                    <a href="https://www.instagram.com/youthgenfil/" target="_blank" class="text-gray-700 hover:text-purple-700 text-2xl transition">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="https://www.youtube.com/@youthgenfil?si=lnFfyiteWt3DCetq" target="_blank" class="text-gray-700 hover:text-purple-700 text-2xl transition">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                    <a href="https://www.facebook.com/gpin.filadelfia/" target="_blank" class="text-gray-700 hover:text-purple-700 text-2xl transition">
+                                        <i class="fab fa-facebook"></i>
+                                    </a>
+                                    <a href="#" class="text-gray-700 hover:text-purple-700 text-2xl transition">
+                                        <i class="fab fa-spotify"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section id="gabung-sekarang" class="py-16 bg-purple-700"> 
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4 leading-tight">
+                    Jangan Ketinggalan Keseruan Youth Genfil!
+                </h2>
+                <p class="text-white text-lg mb-8 max-w-2xl mx-auto">
+                    Dapatkan info terbaru tentang ibadah spesial, acara seru, dan kabar menarik lainnya langsung ke inbox-mu. Yuk, gabung sekarang!
+                </p>
+                
+                <form class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+                    <input 
+                        type="email" 
+                        placeholder="Masukkan email aktifmu di sini" 
+                        class="flex-grow px-6 py-3 rounded-full focus:outline-none focus:ring-2 focus:ring-purple-300 placeholder-gray-500 text-gray-800"
+                        aria-label="Alamat email Anda"
+                    > 
+                    <button 
+                        type="submit" 
+                        class="bg-white hover:bg-gray-200 text-purple-800 px-8 py-3 rounded-full font-bold transition transform hover:scale-105"
+                    > Daftar Sekarang
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 text-center md:text-left mx-auto">
+                <div>
+                    <img src="images/logoYouth.png" alt="Youth Genfil Logo" class="h-12 mb-4 mx-auto md:mx-0">
+                    <p class="text-gray-400 mb-4 text-sm leading-relaxed">Komunitas generasi muda yang bertumbuh dalam iman, persekutuan, dan pelayanan untuk menjangkau generasi bagi Kristus.</p>
+                    <div class="flex space-x-4 justify-center md:justify-start">
+                        <a href="https://www.instagram.com/youthgenfil/" target="_blank" class="text-gray-400 hover:text-white transition text-xl" aria-label="Instagram Youth Genfil">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@youthgenfil?si=lnFfyiteWt3DCetq" target="_blank" class="text-gray-400 hover:text-white transition text-xl" aria-label="YouTube Youth Genfil">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.facebook.com/gpin.filadelfia/" target="_blank" class="text-gray-400 hover:text-white transition text-xl" aria-label="Facebook Youth Genfil">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition text-xl" aria-label="Spotify Youth Genfil">
+                            <i class="fab fa-spotify"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Tautan Cepat</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition text-sm">Beranda</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition text-sm">Tentang Kami</a></li>
+                        <li><a href="#schedule" class="text-gray-400 hover:text-white transition text-sm">Jadwal Ibadah</a></li>
+                        <li><a href="#events" class="text-gray-400 hover:text-white transition text-sm">Acara</a></li>
+                        <li><a href="#media" class="text-gray-400 hover:text-white transition text-sm">Media</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition text-sm">Hubungi Kami</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Kontak</h4>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li class="flex items-start justify-center md:justify-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-base"></i>
+                            <span>Jl. M. Yunus Ujung, Gg. Duku, Way Kandis, Tanjung Senang</span>
+                        </li>
+                        <li class="flex items-start justify-center md:justify-start">
+                            <i class="fas fa-phone-alt mt-1 mr-3 text-base"></i>
+                            <span>(628) 86269826450</span>
+                        </li>
+                        <li class="flex items-start justify-center md:justify-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-base"></i>
+                            <span>youthgenfilbdl@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 Youth Genfil. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition">Kebijakan Privasi</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition">Syarat & Ketentuan</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scroll');
+            } else {
+                navbar.classList.remove('nav-scroll');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Initialize navbar state
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scroll');
+            }
+        });
+    </script>
+</body>
+</html>
